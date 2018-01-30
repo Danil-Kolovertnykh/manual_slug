@@ -14,7 +14,12 @@ module ManualSlug::ActiveRecord
 
   module ClassMethods
     def manual_slug(field, options = {}, callback = true)
-      friendly_id field, use: [:slugged, :finders]
+      unless options.key?(:use)
+        options[:use] = [:slugged, :finders]
+      end
+
+      friendly_id field, options
+
       define_method(:should_generate_new_friendly_id?) do
         slug.blank?
       end

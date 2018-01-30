@@ -20,7 +20,13 @@ module ManualSlug::Mongoid
 
   module ClassMethods
     def manual_slug(field, options = {}, callback = true)
-      options.merge!(permanent: true, history: true)
+      unless options.key?(:permanent)
+        options[:permanent] = true
+      end
+      unless options.key?(:history)
+        options[:history] = true
+      end
+
       slug field, options
 
       # we will create slugs manually when needed
