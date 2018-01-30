@@ -15,7 +15,7 @@ module ManualSlug::ActiveRecord
   module ClassMethods
     def manual_slug(field, options = {}, callback = true)
       unless options.key?(:use)
-        options[:use] = [:slugged, :finders]
+        options[:use] = [:finders, :slugged, :history]
       end
 
       friendly_id field, options
