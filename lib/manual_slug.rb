@@ -1,16 +1,16 @@
 require "manual_slug/version"
 
 module ManualSlug
-  autoload :Mongoid,      'manual_slug/mongoid'
-  autoload :ActiveRecord, 'manual_slug/active_record'
+  autoload :MongoidMod,      'manual_slug/mongoid_mod'
+  autoload :ActiveRecordMod, 'manual_slug/active_record_mod'
 
   extend ActiveSupport::Concern
   if (defined?(RocketCMS) && RocketCMS.mongoid?)
-    include ManualSlug::Mongoid
+    include ManualSlug::MongoidMod
   elsif defined?(ActiveRecord)
-    include ManualSlug::ActiveRecord
+    include ManualSlug::ActiveRecordMod
   elsif defined?(Mongoid)
-    include ManualSlug::Mongoid
+    include ManualSlug::MongoidMod
   else
     puts "manual_slug was unable to find your ORM, please load after ORM"
   end

@@ -1,4 +1,4 @@
-module ManualSlug::ActiveRecord
+module ManualSlug::ActiveRecordMod
   extend ActiveSupport::Concern
 
   included do

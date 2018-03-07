@@ -1,4 +1,4 @@
-module ManualSlug::Mongoid
+module ManualSlug::MongoidMod
   extend ActiveSupport::Concern
   include ::Mongoid::Slug
 
